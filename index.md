@@ -1,12 +1,12 @@
 ---
 layout: base
-title: I'm [Your Full Name]
+title: I'm Anika Marathe
 hide: true
 ---
 
 ### Me and Team
 
-Hi! My name is [Your Full Name].
+Hi! My name is Anika.
 
 | Role         | Name     | Repo Location                       | Stream                | Repo Name |
 |--------------|----------|-------------------------------------|-----------------------|-----------|
@@ -28,9 +28,12 @@ Hi! My name is [Your Full Name].
 <a href="https://open-coding-society.github.io/student">
     <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?logo=github&logoColor=white" alt="GitHub Pages">
 </a>
-<a href="https://kasm.opencodingsociety.com/" class="button small" style="background-color: #6b4bd3ff">
+<a href="https://kasm.opencodingsociety.com/"
+   class="button small"
+   style="background-color: #d34bafff; border: 2px solid black; border-radius: 8px;">
     KASM
 </a>
+
 <a href="https://vscode.dev/" class="button small" style="background-color: #d38a4bff">
     <span style="color: #1295b3ff">VSCODE</span>
 </a>
