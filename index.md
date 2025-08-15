@@ -34,11 +34,17 @@ Hi! My name is Anika.
     KASM
 </a>
 
-<a href="https://vscode.dev/" class="button small" style="background-color: #d38a4bff">
-    <span style="color: #1295b3ff">VSCODE</span>
+<a href="https://vscode.dev/" class="button small" style="background-color: #d38a4bff; padding: 10px 20px; border-radius: 8px; text-decoration: none; transition: all 0.3s ease;">
+    <span style="color: #1295b3ff; font-weight: bold;">VSCODE</span>
 </a>
 
-<br>
+<style>
+.button:hover {
+    box-shadow: 0px 0px 10px #d38a4b;
+    transform: scale(1.05);
+}
+</style>
+
 
 ### Class Progress
 
