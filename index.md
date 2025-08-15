@@ -29,7 +29,7 @@ Hi! My name is Anika.
     <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?logo=github&logoColor=white" alt="GitHub Pages">
 </a>
 <a href="https://kasm.opencodingsociety.com/"
-   class="button small"
+   class="button small"  
    style="background-color: #d34bafff; border: 2px solid black; border-radius: 8px;">
     KASM
 </a>
