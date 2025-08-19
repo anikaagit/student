@@ -53,6 +53,8 @@ Hi! My name is Anika.
 </a>
 <a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #2A7DB1">
     <span style="color: #000000">Turtle</span>
+    <button onclick="toggleTheme()" class="theme-btn">Toggle Theme</button>
+
 </a>
 
 <br>
