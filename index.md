@@ -51,11 +51,31 @@ Hi! My name is Anika.
 <a href="{{site.baseurl}}/snake" class="button small" style="background-color: #6b4bd3ff">
     Snake Game
 </a>
+
 <a href="{{site.baseurl}}/turtle" class="button small" style="background-color: #2A7DB1">
     <span style="color: #000000">Turtle</span>
-    <button onclick="toggleTheme()" class="theme-btn">Toggle Theme</button>
-
 </a>
+
+<button onclick="toggleTheme()" class="theme-btn">🌗 Toggle Theme</button>
+
+<style>
+.theme-btn {
+  background: linear-gradient(135deg, #d38a4b, #6b4bd3);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow:  0px 0px 12px #6b4bd3;
+</style>
 
 <br>
 
