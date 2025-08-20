@@ -43,7 +43,15 @@ Hi! My name is Anika.
     box-shadow: 0px 0px 10px #d38a4b;
     transform: scale(1.05);
 }
+
+/* Cute pastel background */
+body {
+    background: linear-gradient(to bottom right, #ffe6f0, #e0f7ff);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
 </style>
+
+
 
 
 ### Class Progress
@@ -56,7 +64,7 @@ Hi! My name is Anika.
     <span style="color: #000000">Turtle</span>
 </a>
 
-<button onclick="toggleTheme()" class="theme-btn">🌗 Toggle Theme</button>
+
 
 <style>
 .theme-btn {
