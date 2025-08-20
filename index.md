@@ -44,8 +44,10 @@ body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     color: #660033; /* default text color to show on pink */
     background-image: url("images/cloud.jpg"); /* cloudy day */
-    background-repeat: repeat;
-    background-size: 100px 100px;
+    background-repeat: no-repeat;  /* Prevents the image from tiling */
+    background-size: cover;        /* Scales the image to cover the entire background */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed;  /* Keeps the background image fixed while scrolling */
 }
 
 /* Headings: pop and readable */
