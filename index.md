@@ -43,7 +43,7 @@ body {
     background: linear-gradient(to bottom right, #ffd6e8, #ffe6f0);
     font-family: 'Comic Sans MS', cursive, sans-serif;
     color: #660033; /* default text color to show on pink */
-    background-image: url('https://i.postimg.cc/Nf7h2xZk/flower-bg.png'); /* cute transparent flower */
+    background-image: url('https://unsplash.com/s/photos/pastel-flower'); /* cute transparent flower */
     background-repeat: repeat;
     background-size: 100px 100px;
 }
