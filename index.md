@@ -10,11 +10,10 @@ Hi! My name is Anika.
 
 | Role         | Name     | Repo Location                       | Stream                | Repo Name |
 |--------------|----------|-------------------------------------|-----------------------|-----------|
-| Scrum Master | John     | github.com/jm1021/student           | upstream (OCS fork)   | student   |
-| Scrummer     | Torin    | github.com/torin/student            | downstream (fork)     | student   |
-| Scrummer     | Avantika | github.com/avantika/student         | downstream (fork)     | student   |
-| Scrummer     | Aadit    | github.com/aaadit/student           | downstream (fork)     | student   |
-
+| Scrum Master | John     | github.com/jm1021/student           | upstream (OCS fork)   |    |
+| Scrummer     | Torin    | github.com/torin/student            | downstream (fork)     |    |
+| Scrummer     | Avantika | github.com/avantika/student         | downstream (fork)     |    |
+| Scrummer     | Aadit    | github.com/aaadit/student           | downstream (fork)     |    |
 
 ## Links to Learning
 
@@ -39,20 +38,76 @@ Hi! My name is Anika.
 </a>
 
 <style>
-.button:hover {
-    box-shadow: 0px 0px 10px #d38a4b;
-    transform: scale(1.05);
+/* Cute pastel pink background with flower pattern */
+body {
+    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f0);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #660033; /* default text color to show on pink */
+    background-image: url('https://i.postimg.cc/Nf7h2xZk/flower-bg.png'); /* cute transparent flower */
+    background-repeat: repeat;
+    background-size: 100px 100px;
 }
 
-/* Cute pastel background */
-body {
-    background: linear-gradient(to bottom right, #ffe6f0, #e0f7ff);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+/* Headings: pop and readable */
+h3 {
+    color: #ff3399;
+    text-shadow: 1px 1px 2px #ffa3c6;
+}
+
+/* Buttons: pastel pink + sparkle hover */
+.button.small {
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.button.small:hover {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow: 0 0 12px #ff99cc, 0 0 20px #ffb3d9;
+}
+
+/* Theme button tweaks */
+.theme-btn {
+    background: linear-gradient(135deg, #ff99cc, #ff66b3);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.theme-btn:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0px 0px 12px #ff99cc, 0px 0px 20px #ff66b3;
+}
+
+/* Links: pink and readable */
+a {
+    color: #cc0066;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff3399;
+    text-decoration: underline;
+}
+
+/* Table: pastel pink background, rounded, shadow */
+table {
+    background-color: #ffd6e8;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(255, 102, 179, 0.4);
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: center;
+    color: #660033;
 }
 </style>
-
-
-
 
 ### Class Progress
 
@@ -64,26 +119,7 @@ body {
     <span style="color: #000000">Turtle</span>
 </a>
 
-
-
-<style>
-.theme-btn {
-  background: linear-gradient(135deg, #d38a4b, #6b4bd3);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-.theme-btn:hover {
-  transform: scale(1.08) rotate(-2deg);
-  box-shadow:  0px 0px 12px #6b4bd3;
-</style>
+<button onclick="toggleTheme()" class="theme-btn">🌗 Toggle Theme</button>
 
 <br>
 
