@@ -1,7 +1,7 @@
 title: Open Coding 
-description: "Class of 2026"
-owner_name: John Mortensen
-github_username: jm1021 
+description: "Class of 2028"
+owner_name: Anika Marathe
+github_username: anikaagit 
 github_repo: "student" 
 baseurl: "/student" 
 future: true
@@ -12,9 +12,22 @@ minima:
     - { platform: github, user_url: "https://github.com/open-coding-society" }
     - { platform: x, user_url: "https://x.com/Open_Coding" }
     - { platform: youtube, user_url: "https://www.youtube.com/@OpenCodingSociety" } 
+remote_theme: pages-themes/cayman@v0.2.0
+#plugins:
+#- jekyll-remote-theme # add this line to the plugins list if you already have one
+#remote_theme: pages-themes/midnight@v0.2.0
+#remote_theme: pages-themes/cayman
+#emote_theme: pages-themes/dinky@v0.2.0
+# remote_theme: pages-themes/minimal@v0.2.0
+# remote_theme: pages-themes/time-machine@v0.2.0
 plugins:
   - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-github-metadata
   - jekyll-include-cache
+#plugins:
+  #- jekyll-remote-theme
+  #- jekyll-include-cache
 header_pages:
   - navigation/blog.md
   - navigation/search.md
