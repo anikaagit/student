@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: default
 title: I'm Anika Marathe
 hide: true
 ---
