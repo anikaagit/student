@@ -253,7 +253,7 @@ class PowerUp extends GameObject {
     } else if (this.type === 'Multi-Ball') {
       // spawn one extra ball above paddle with a safe initial position/direction
       const angle = (Math.random() * 1.2 - 0.6); // -0.6..0.6 radians
-      const speed = 3;
+      const speed = 4;
       const spawnX = clamp(paddleX + paddleWidth / 2 + (Math.random() - 0.5) * 20, 20, canvas.width - 20);
       const spawnY = canvas.height - paddleHeight - 10 - 12; // above paddle
       balls.push(new Ball(spawnX, spawnY, speed * Math.cos(angle), -Math.abs(speed * Math.sin(angle))));
