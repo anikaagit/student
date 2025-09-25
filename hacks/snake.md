@@ -268,8 +268,8 @@ permalink: /snake/
 
         let gameInterval = null;
 
-        const OBSTACLE_COUNT = 10;
-        const FOOD_COUNT = 3;
+        const OBSTACLE_COUNT = 8;
+        const FOOD_COUNT = 5;
 
         let showScreen = function (screen_opt) {
             SCREEN = screen_opt;
