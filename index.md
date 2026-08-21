@@ -10,10 +10,17 @@ Hi! My name is Anika.
 
 | Role | Name | Repo Location | Stream | Repo Name |
 |---|---|---|---|---|
-| Scrum Master | John | github.com/jm1021/student | upstream (OCS fork) | |
-| Scrummer | Torin | github.com/torin/student | downstream (fork) | |
-| Scrummer | Avantika | github.com/avantika/student | downstream (fork) | |
-| Scrummer | Aadit | github.com/aaadit/student | downstream (fork) | |
+| Scrummer| Anika Marathe |
+| Assistant Scrum Master | Anishka Sanghvi | 
+| Scrummer | Avantika Chitarri | 
+
+<a href="{{site.baseurl}}/csa/unit1-lessons/" class="button small" style="background-color: #ff6699; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+    <span style="color: #ffffff; font-weight: bold;">Unit 1 Enhanced CSA Lessons</span>
+</a>
+
+<a href="{{site.baseurl}}/java_code_runner.html" class="button small" style="background-color: #4bd3b7; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+    <span style="color: #10231d; font-weight: bold;">Code Runner</span>
+</a>
 
 ## Links to Learning
 

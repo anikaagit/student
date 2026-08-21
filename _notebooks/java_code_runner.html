@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Code Runner Challenge</title>
+<style>
+  :root {
+    --bg: #1e1e1e;
+    --panel: #252526;
+    --border: #3c3c3c;
+    --text: #d4d4d4;
+    --accent: #4ec9b0;
+    --gutter: #858585;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px;
+    background: #121212;
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .runner {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .runner-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .runner-header .eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .runner-header h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .runner-header .subtitle {
+    font-size: 14px;
+    color: #9d9d9d;
+    margin-top: 4px;
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: #2d2d2d;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .toolbar button {
+    background: #3c3c3c;
+    color: var(--text);
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .toolbar button:hover { background: #4a4a4a; }
+  .toolbar button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .toolbar button.run {
+    background: var(--accent);
+    color: #10231d;
+    font-weight: 600;
+    border-color: var(--accent);
+  }
+
+  .toolbar button.run:hover { background: #5fd9c1; }
+
+  .toolbar select {
+    background: #3c3c3c;
+    color: var(--text);
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .toolbar .spacer { flex: 1; }
+
+  .editor-wrap {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #line-numbers {
+    width: 44px;
+    padding: 12px 6px;
+    text-align: right;
+    color: var(--gutter);
+    font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    white-space: pre;
+    overflow: hidden;
+    user-select: none;
+    background: #1a1a1a;
+    border-right: 1px solid var(--border);
+  }
+
+  #editor {
+    flex: 1;
+    resize: vertical;
+    min-height: 260px;
+    padding: 12px 14px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    tab-size: 4;
+  }
+
+  .stats-bar {
+    padding: 6px 20px;
+    font-size: 12px;
+    color: #858585;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .output-header {
+    padding: 10px 20px 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9d9d9d;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #output-panel {
+    margin: 0 20px 20px;
+    padding: 14px;
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+    font-size: 13px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 80px;
+    color: #b8e6b8;
+  }
+</style>
+</head>
+<body>
+
+<div class="runner">
+
+  <div class="runner-header">
+    <div class="eyebrow">Code Runner Challenge</div>
+    <h1 id="challenge-title">Methods and Control Structures — indexOf and substring</h1>
+    <div class="subtitle">Edit the code below, then click Run to execute it for real.</div>
+  </div>
+
+  <div class="toolbar">
+    <button class="run" id="run-btn" title="Run this code">&#9654; Run</button>
+    <button id="copy-btn" title="Copy code to clipboard">&#9098; Copy</button>
+    <button id="save-btn" title="Download code as a file">&#128190; Save</button>
+    <button id="clear-btn" title="Clear the editor">&#128465; Clear</button>
+
+    <div class="spacer"></div>
+
+    <select id="language-select" title="Language">
+      <option value="java" selected>Java</option>
+      <option value="python">Python</option>
+      <option value="javascript">JavaScript</option>
+      <option value="pseudocode">Pseudocode</option>
+    </select>
+
+    <select id="font-size-select" title="Font size">
+      <option value="14" selected>14px</option>
+      <option value="16">16px</option>
+      <option value="18">18px</option>
+      <option value="20">20px</option>
+    </select>
+  </div>
+
+  <div class="editor-wrap">
+    <div id="line-numbers">1</div>
+    <textarea id="editor" spellcheck="false"></textarea>
+  </div>
+
+  <div class="stats-bar" id="stats-line">Lines: 1 · Characters: 0</div>
+
+  <div class="output-header">
+    <span>Output</span>
+    <span style="font-size:11px; color:#666;">via Piston-compatible execution API</span>
+  </div>
+  <div id="output-panel">Click "Run" in the code control panel to see output ...</div>
+
+</div>
+
+<script>
+// =====================================================================
+// CONFIGURATION
+// This widget sends code to a Piston-compatible execution API:
+//   POST { language, version, files: [{ name, content }] }
+//
+// The public emkc.org endpoint below now requires an authorization
+// token (public access was closed Feb 2026). To make "Run" actually
+// work, do ONE of the following and swap the URL/headers below:
+//
+//   1) Point PISTON_API_URL at your class's existing coderunner
+//      backend, if your school/repo already runs one.
+//   2) Request access to the public Piston API from EngineerMan
+//      (see https://github.com/engineer-man/piston) and add your
+//      token in the fetch() headers further down.
+//   3) Self-host Piston yourself via Docker — it's free and
+//      unlimited once running: https://github.com/engineer-man/piston
+// =====================================================================
+const PISTON_API_URL = "https://emkc.org/api/v2/piston/execute";
+
+const LANGUAGE_CONFIG = {
+  java: { pistonLanguage: "java", version: "*", extension: "java", label: "Java" },
+  python: { pistonLanguage: "python", version: "*", extension: "py", label: "Python" },
+  javascript: { pistonLanguage: "javascript", version: "*", extension: "js", label: "JavaScript" },
+  pseudocode: { pistonLanguage: null, version: null, extension: "txt", label: "Pseudocode" }
+};
+
+const DEFAULT_CODE = {
+  java: `// CODE_RUNNER: Methods and Control Structures - indexOf and substring
+
+// SubstringTester class to test shortenMessage method
+public class Main {
+    private String shortenMessage(String message, String str) {
+
+        // Candidate
+        System.out.println("Original Message: " + message);
+        // Removal substring
+        System.out.println("Substring to remove: " + str);
+
+        // Find position of str in message
+        int position = message.indexOf(str);
+        int length = str.length();
+
+        // Not found case
+        if (position == -1) {
+            System.out.println("No action, substring not found: " + str);
+            return message;
+        }
+
+        // Found case
+        String newFront = message.substring(0, position);
+        String newBack = message.substring(position + length);
+
+        System.out.println("Front: " + newFront);
+        System.out.println("Back: " + newBack);
+
+        return (newFront + newBack);
+    }
+
+    public void driver() {
+
+        String[][] messageData = {
+            {"Hello, OpenCS!", ","},              // Test in the middle
+            {"Java code code coding!", "Java"},   // Test at the beginning
+            {"Java programming is fun.", "."},    // Test at the end
+            {"No substring here", "exception"},   // Test not found
+        };
+
+        for (String[] data : messageData) {
+            String message = data[0];
+            String str = data[1];
+            String result = shortenMessage(message, str);
+            System.out.println("Shortened Message: " + result);
+            System.out.println("-----");
+        }
+    }
+
+    public static void main(String[] args) {
+        Main tester = new Main();
+        tester.driver();
+    }
+}
+
+Main.main(null);`,
+  python: `print("Hello, Boba!")`,
+  javascript: `console.log("Hello, Boba!");`,
+  pseudocode: `BEGIN\n    PRINT "Hello, Boba!"\nEND`
+};
+
+const editor = document.getElementById("editor");
+const lineNumbers = document.getElementById("line-numbers");
+const languageSelect = document.getElementById("language-select");
+const fontSizeSelect = document.getElementById("font-size-select");
+const runBtn = document.getElementById("run-btn");
+const copyBtn = document.getElementById("copy-btn");
+const saveBtn = document.getElementById("save-btn");
+const clearBtn = document.getElementById("clear-btn");
+const outputPanel = document.getElementById("output-panel");
+const statsLine = document.getElementById("stats-line");
+
+function updateLineNumbers() {
+  const lines = editor.value.split("\n").length;
+  let out = "";
+  for (let i = 1; i <= lines; i++) out += i + "\n";
+  lineNumbers.textContent = out;
+}
+
+function updateStats() {
+  const lines = editor.value.split("\n").length;
+  const chars = editor.value.length;
+  statsLine.textContent = `Lines: ${lines} · Characters: ${chars}`;
+}
+
+function syncScroll() {
+  lineNumbers.scrollTop = editor.scrollTop;
+}
+
+function refreshEditorChrome() {
+  updateLineNumbers();
+  updateStats();
+}
+
+editor.addEventListener("input", refreshEditorChrome);
+editor.addEventListener("scroll", syncScroll);
+
+languageSelect.addEventListener("change", () => {
+  const lang = languageSelect.value;
+  editor.value = DEFAULT_CODE[lang];
+  refreshEditorChrome();
+  const isPseudo = lang === "pseudocode";
+  runBtn.disabled = isPseudo;
+  runBtn.title = isPseudo ? "Pseudocode cannot be executed" : "Run this code";
+  outputPanel.textContent = isPseudo
+    ? "Pseudocode is for planning only — it can't be run. Switch languages to execute real code."
+    : "Click \"Run\" in the code control panel to see output ...";
+});
+
+fontSizeSelect.addEventListener("change", () => {
+  const size = fontSizeSelect.value + "px";
+  editor.style.fontSize = size;
+  lineNumbers.style.fontSize = size;
+});
+
+copyBtn.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(editor.value);
+    flashButton(copyBtn, "Copied!");
+  } catch (err) {
+    flashButton(copyBtn, "Copy failed");
+  }
+});
+
+saveBtn.addEventListener("click", () => {
+  const lang = languageSelect.value;
+  const ext = LANGUAGE_CONFIG[lang].extension;
+  const blob = new Blob([editor.value], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `code_runner_output.${ext}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+clearBtn.addEventListener("click", () => {
+  if (confirm("Clear all code in the editor?")) {
+    editor.value = "";
+    refreshEditorChrome();
+    outputPanel.textContent = "Click \"Run\" in the code control panel to see output ...";
+  }
+});
+
+function flashButton(btn, text) {
+  const original = btn.textContent;
+  btn.textContent = text;
+  setTimeout(() => { btn.textContent = original; }, 1200);
+}
+
+runBtn.addEventListener("click", async () => {
+  const lang = languageSelect.value;
+  const config = LANGUAGE_CONFIG[lang];
+
+  if (!config.pistonLanguage) {
+    outputPanel.textContent = "Pseudocode cannot be executed.";
+    return;
+  }
+
+  runBtn.disabled = true;
+  const originalLabel = runBtn.textContent;
+  runBtn.textContent = "Running...";
+  outputPanel.textContent = "Running...";
+
+  try {
+    const response = await fetch(PISTON_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        language: config.pistonLanguage,
+        version: config.version,
+        files: [{ name: "Main." + config.extension, content: editor.value }]
+      })
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      outputPanel.textContent =
+        `Request failed (HTTP ${response.status}).\n\n` +
+        `This usually means the execution endpoint needs authorization or a different URL.\n` +
+        `See the PISTON_API_URL comment at the top of this file's <script> block.\n\n` +
+        `Server said:\n${text}`;
+      return;
+    }
+
+    const result = await response.json();
+    let out = "";
+
+    if (result.compile && (result.compile.stdout || result.compile.stderr)) {
+      out += "== Compile ==\n";
+      if (result.compile.stdout) out += result.compile.stdout + "\n";
+      if (result.compile.stderr) out += result.compile.stderr + "\n";
+      out += "\n";
+    }
+
+    if (result.run) {
+      out += "== Run ==\n";
+      out += result.run.stdout || "";
+      if (result.run.stderr) out += "\n" + result.run.stderr;
+      out += `\n\nExit Code: ${result.run.code}`;
+    }
+
+    outputPanel.textContent = out.trim() || "(no output)";
+  } catch (err) {
+    outputPanel.textContent =
+      "Network error — could not reach the execution endpoint.\n\n" +
+      "Check PISTON_API_URL at the top of the script, and your internet connection.\n\n" +
+      String(err);
+  } finally {
+    runBtn.disabled = false;
+    runBtn.textContent = originalLabel;
+  }
+});
+
+// Initial load
+editor.value = DEFAULT_CODE.java;
+refreshEditorChrome();
+</script>
+
+</body>
+</html>
